@@ -8,12 +8,17 @@ class Movie extends Component {
         this.props.dispatch({ type: 'FETCH_MOVIES' });
     }
 
+    movieDetails = (movieToGet) => {
+        this.props.history.push('/details');
+        this.props.dispatch({ type: 'FETCH_DETAILS', payload: movieToGet});
+    }
+
     render() {
         return (
             <div>
                 <ul>
                     {this.props.reduxStore.movies.map((movieInfo, i) => 
-                        <MovieItem key={i} movie={movieInfo} />
+                        <MovieItem key={i} movie={movieInfo} goToDetails={() => this.movieDetails(movieInfo)}/>
                     )}
                 </ul>
             </div>
