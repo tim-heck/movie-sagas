@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MovieItem from '../MovieItem/MovieItem';
 
 class Movie extends Component {
 
@@ -9,9 +10,13 @@ class Movie extends Component {
 
     render() {
         return (
-            <>
-                {JSON.stringify(this.props.reduxStore.movies)}
-            </>
+            <div>
+                <ul>
+                    {this.props.reduxStore.movies.map((movieInfo, i) => 
+                        <MovieItem key={i} movie={movieInfo} />
+                    )}
+                </ul>
+            </div>
         );
     }
 }
