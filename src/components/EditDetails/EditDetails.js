@@ -5,8 +5,8 @@ import Header from '../Header/Header';
 class EditDetails extends Component {
 
     state = {
-        title: '',
-        description: ''
+        title: this.props.reduxStore.details.title,
+        description: this.props.reduxStore.details.description
     }
 
     handleChangeFor = (event, inputToChange) => {

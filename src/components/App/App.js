@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Movie from '../Movie/Movie';
-import Genre from '../Genre/Genre';
+// import Genre from '../Genre/Genre';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import EditDetails from '../EditDetails/EditDetails';
 

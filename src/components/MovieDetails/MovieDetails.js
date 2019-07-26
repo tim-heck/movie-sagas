@@ -22,12 +22,8 @@ class MovieDetails extends Component {
                         <button onClick={() => this.handleClickFor('back')}>Back to Movies List</button>
                         <button onClick={() => this.handleClickFor('edit')}>Edit</button>
                     </div>
-                    {this.props.reduxStore.details.map(movie =>
-                        <>
-                            <h2>{movie.title}</h2>
-                            <p>{movie.description}</p>
-                        </>
-                    )}
+                    <h2>{this.props.reduxStore.details.title}</h2>
+                    <p>{this.props.reduxStore.details.description}</p>
                 </div>
             </>
         );
