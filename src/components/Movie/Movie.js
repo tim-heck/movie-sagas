@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import MovieItem from '../MovieItem/MovieItem';
 
 class Movie extends Component {
 
@@ -7,11 +8,20 @@ class Movie extends Component {
         this.props.dispatch({ type: 'FETCH_MOVIES' });
     }
 
+    movieDetails = (movieToGet) => {
+        this.props.history.push('/details');
+        this.props.dispatch({ type: 'FETCH_DETAILS', payload: movieToGet});
+    }
+
     render() {
         return (
-            <>
-                {JSON.stringify(this.props.reduxStore.movies)}
-            </>
+            <div>
+                <ul>
+                    {this.props.reduxStore.movies.map((movieInfo, i) => 
+                        <MovieItem key={i} movie={movieInfo} goToDetails={() => this.movieDetails(movieInfo)}/>
+                    )}
+                </ul>
+            </div>
         );
     }
 }
