@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Header from '../Header/Header';
 import MovieItem from '../MovieItem/MovieItem';
 
 class Movie extends Component {
@@ -15,6 +16,8 @@ class Movie extends Component {
 
     render() {
         return (
+            <>
+            <Header textToShow="Movies" />
             <div>
                 <ul>
                     {this.props.reduxStore.movies.map((movieInfo, i) => 
@@ -22,6 +25,7 @@ class Movie extends Component {
                     )}
                 </ul>
             </div>
+            </>
         );
     }
 }

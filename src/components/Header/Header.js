@@ -6,7 +6,7 @@ class Header extends Component {
     render() {
         return (
             <header>
-                <h1>Movies</h1>
+                <h1>{this.props.textToShow}</h1>
             </header>
         );
     }

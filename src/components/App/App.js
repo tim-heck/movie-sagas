@@ -3,8 +3,8 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import Movie from '../Movie/Movie';
 import Genre from '../Genre/Genre';
-import Header from '../Header/Header';
 import MovieDetails from '../MovieDetails/MovieDetails';
+import EditDetails from '../EditDetails/EditDetails';
 
 class App extends Component {
   // Renders the entire app on the DOM
@@ -12,9 +12,9 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Header />
           <Route exact path="/" component={Movie}/>
           <Route exact path="/details" component={MovieDetails} />
+          <Route exact path="/edit" component={EditDetails} />
         </div>
       </Router>
     );
