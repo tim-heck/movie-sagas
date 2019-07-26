@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
-    const sqlText = 'SELECT * FROM movies;';
+    const sqlText = 'SELECT * FROM movies ORDER BY title ASC;';
     pool.query(sqlText).then(result => {
         res.send(result.rows);
     }).catch(err => {
@@ -20,6 +20,17 @@ router.get('/details/:id', (req, res) => {
         res.send(result.rows[0]);
     }).catch(err => {
         console.log('Error when getting specific movie by id', err);
+        res.sendStatus(500);
+    })
+})
+
+router.put('/', (req, res) => {
+    const sqlText = 'UPDATE movies SET title = $1, description = $2 WHERE id=$3;';
+    const values = [req.body.title, req.body.description, req.body.id];
+    pool.query(sqlText, values).then(result => {
+        res.sendStatus(200);
+    }).catch(err => {
+        console.log('Error when updating specific movie by id', err);
         res.sendStatus(500);
     })
 })
