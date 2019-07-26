@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
-    const sqlText = 'SELECT * FROM movie;';
+    const sqlText = 'SELECT * FROM movies;';
     pool.query(sqlText).then(result => {
         res.send(result.rows);
     }).catch(err => {
