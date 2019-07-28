@@ -19,6 +19,13 @@ const styles = theme => ({
         maxWidth: 400,
         display: 'inline-block',
         margin: 10,
+        textAlign: 'left',
+        boxShadow: '0px 6px 12px 0px rgba(0,0,0,0.2)',
+        transition: '.3s',
+        '&:hover':{
+            boxShadow: '0px 10px 12px 0px rgba(0,0,0,0.4)',
+            transform: 'translateY(-6px)',
+        }
     },
     title: {
         height: 70,
@@ -41,6 +48,9 @@ const styles = theme => ({
     expandOpen: {
         transform: 'rotate(180deg)',
     },
+    description: {
+        paddingLeft: 8
+    },
 });
 
 class MovieItem extends Component {
@@ -62,6 +72,7 @@ class MovieItem extends Component {
                     image={this.props.movie.poster}
                 />
                 <CardActions className={classes.actions} disableActionSpacing>
+                    <Typography className={classes.description} component="h3">Description</Typography>
                     <IconButton
                         className={classnames(classes.expand, {
                             [classes.expandOpen]: this.state.expanded,
