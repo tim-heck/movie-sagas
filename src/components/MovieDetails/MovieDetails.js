@@ -16,7 +16,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 const styles = theme => ({
     card: {
         maxWidth: 1260,
-
     },
     title: {
         fontSize: 30,
@@ -30,10 +29,20 @@ const styles = theme => ({
         textAlign: 'left'
     },
     list: {
-        maxWidth: 600
+        maxWidth: 600,
+        flexDirection: 'column'
     },
     listItems: {
-        display: 'inline'
+        width: '100%',
+        padding: 0
+    },
+    btn: {
+        backgroundColor: '#573A3A',
+        color: '#fff',
+        padding: '8px 15px',
+        '&:hover': {
+            backgroundColor: '#BA444B',
+        }
     },
 });
 
@@ -90,8 +99,8 @@ class MovieDetails extends Component {
                             </List>
                         </CardContent>
                         <CardActions>
-                            <Button onClick={() => this.handleClickFor('back')} size="small">Back to Movies List</Button>
-                            <Button onClick={() => this.handleClickFor('edit')} size="small">Edit</Button>
+                            <Button className={classes.btn} onClick={() => this.handleClickFor('back')} size="small">Back to Movies List</Button>
+                            <Button className={classes.btn} onClick={() => this.handleClickFor('edit')} size="small">Edit</Button>
                         </CardActions>
                     </Card>
                 </div>
