@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import Header from '../Header/Header';
 import MovieItem from '../MovieItem/MovieItem';
 
-class Movie extends Component {
+import './MovieList.css';
+
+class MovieList extends Component {
 
     // Sends an action to get movie list when component is ready
     componentDidMount() {
@@ -16,20 +18,18 @@ class Movie extends Component {
      */
     movieDetails = (movieToGet) => {
         this.props.history.push('/details');
-        this.props.dispatch({ type: 'FETCH_DETAILS', payload: movieToGet});
+        this.props.dispatch({ type: 'FETCH_DETAILS', payload: movieToGet });
     }
 
     render() {
         return (
             <>
-            <Header textToShow="Movies" />
-            <div>
-                <ul>
-                    {this.props.reduxStore.movies.map((movieInfo, i) => 
-                        <MovieItem key={i} movie={movieInfo} goToDetails={() => this.movieDetails(movieInfo)}/>
+                <Header textToShow="Movies" />
+                <div className="container">
+                    {this.props.reduxStore.movies.map((movieInfo, i) =>
+                        <MovieItem key={i} movie={movieInfo} goToDetails={() => this.movieDetails(movieInfo)} />
                     )}
-                </ul>
-            </div>
+                </div>
             </>
         );
     }
@@ -39,4 +39,4 @@ const stateToProps = (reduxStore) => ({
     reduxStore
 })
 
-export default connect(stateToProps)(Movie);
+export default connect(stateToProps)(MovieList);
