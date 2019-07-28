@@ -42,3 +42,12 @@ VALUES
 ('Science Fiction'),
 ('Space-Opera'),
 ('Superhero');
+
+CREATE TABLE "categorize_movies" (
+  "id" SERIAL PRIMARY KEY,
+  "movie_id" INT REFERENCES "movies",
+  "genre_id" INT REFERENCES "genres"
+);
+
+INSERT INTO categorize_movies (movie_id, genre_id) 
+VALUES (1, 1), (1, 7), (10, 1), (10, 11), (2, 2), (2, 9);

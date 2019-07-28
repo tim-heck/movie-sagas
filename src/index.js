@@ -40,8 +40,10 @@ function* fetchGenres() {
 
 function* fetchDetails(action) {
     try {
+        console.log(action.payload);
         const response = yield axios.get(`/movies/details/${action.payload.id}`);
-        yield put({ type: 'SET_DETAILS', payload: response.data });
+        yield put({ type: 'SET_FIRST_DETAILS', payload: response.data[0] });
+        yield put({ type: 'SET_DETAILS', payload: response.data })
     } catch (err) {
         console.log(err);
     }
@@ -80,7 +82,17 @@ const genres = (state = [], action) => {
     }
 }
 
-const details = (state = {}, action) => {
+const firstDetails = (state = {}, action) => {
+    console.log(action.payload);
+    switch (action.type) {
+        case 'SET_FIRST_DETAILS':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+const details = (state = [], action) => {
     console.log(action.payload);
     switch (action.type) {
         case 'SET_DETAILS':
@@ -95,6 +107,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        firstDetails,
         details,
     }),
     // Add sagaMiddleware to our store
