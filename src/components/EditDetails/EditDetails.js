@@ -10,6 +10,9 @@ class EditDetails extends Component {
         description: this.props.reduxStore.details.description
     }
 
+    /**
+     * Method that keeps track of the user input and updates the state
+     */
     handleChangeFor = (event, inputToChange) => {
         console.log(inputToChange);
         this.setState({
@@ -17,6 +20,10 @@ class EditDetails extends Component {
         })
     }
 
+    /**
+     * Method that dispatches a action for updating the details if changes are made
+     * redurects back to the details page
+     */
     handleClickFor = (path) => {
         if (path === 'save') {
             this.props.dispatch({ type: 'UPDATE_DETAILS', payload: this.state })

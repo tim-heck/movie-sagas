@@ -4,6 +4,10 @@ import Header from '../Header/Header';
 
 class MovieDetails extends Component {
 
+    /**
+     * Method that redirects to the home page or /edits depending on
+     * what button was clicked
+     */
     handleClickFor = (path) => {
         console.log(path);
         if (path === 'back') {

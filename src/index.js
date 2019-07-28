@@ -20,6 +20,10 @@ function* rootSaga() {
     yield takeEvery('UPDATE_DETAILS', updateDetails);
 }
 
+/**
+ * Saga/generator function that sends a get request to the server for /movies
+ * then stores them in the movies reducer
+ */
 function* fetchMovies() {
     try {
         const response = yield axios.get('/movies');
@@ -29,6 +33,10 @@ function* fetchMovies() {
     }
 }
 
+/**
+ * Saga/generator function that sends a get request to the server for /genres
+ * then stores them in the genres reducer
+ */
 function* fetchGenres() {
     try {
         const response = yield axios.get('/genres');
@@ -38,6 +46,12 @@ function* fetchGenres() {
     }
 }
 
+/**
+ * Saga/generator function that sends a get request to the server for /movies/details/id
+ * then stores the first object in the firstDetails reducer and all details in
+ * the details reducer
+ * @param {object} action contains the type and payload passed from a dispatch
+ */
 function* fetchDetails(action) {
     try {
         console.log(action.payload);
@@ -49,6 +63,12 @@ function* fetchDetails(action) {
     }
 }
 
+/**
+ * Saga/generator function that sends a put request to the server for /movies
+ * to update a title and/or description change
+ * Calls the fetchMovies with action type to get updated movie list
+ * @param {object} action contains the type and payload passed from a dispatch
+ */
 function* updateDetails(action) {
     console.log('in updateDetails', action.payload);
     try {
@@ -82,6 +102,7 @@ const genres = (state = [], action) => {
     }
 }
 
+// Used to store first details object
 const firstDetails = (state = {}, action) => {
     console.log(action.payload);
     switch (action.type) {
@@ -92,6 +113,7 @@ const firstDetails = (state = {}, action) => {
     }
 }
 
+// Used to store a specific movie's details
 const details = (state = [], action) => {
     console.log(action.payload);
     switch (action.type) {
