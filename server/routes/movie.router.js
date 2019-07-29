@@ -17,11 +17,10 @@ router.get('/', (req, res) => {
 router.get('/details/genres/:id', (req, res) => {
     const id = req.params.id;
     const sqlText = `
-        SELECT movies.id, movies.title, movies.description, genres.name AS genre
-        FROM categorize_movies
-        JOIN movies ON movies.id = categorize_movies.movie_id
-        JOIN genres ON genres.id = categorize_movies.genre_id
-        WHERE categorize_movies.movie_id = $1;
+        SELECT genres.id, genres.name AS genre 
+        FROM categorize_movies AS cm
+        JOIN genres ON cm.genre_id = genres.id
+        WHERE cm.movie_id=$1;
     `;
     pool.query(sqlText, [id]).then(result => {
         console.log(result.rows);
