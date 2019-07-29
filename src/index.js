@@ -55,9 +55,10 @@ function* fetchGenres() {
 function* fetchDetails(action) {
     try {
         console.log(action.payload);
-        const response = yield axios.get(`/movies/details/${action.payload.id}`);
-        yield put({ type: 'SET_FIRST_DETAILS', payload: response.data[0] });
-        yield put({ type: 'SET_DETAILS', payload: response.data })
+        const responseMovies = yield axios.get(`/movies/details/${action.payload.id}`);
+        yield put({ type: 'SET_FIRST_DETAILS', payload: responseMovies.data[0] });
+        const responseGenres = yield axios.get(`/movies/details/genres/${action.payload.id}`);
+        yield put({ type: 'SET_DETAILS', payload: responseGenres.data })
     } catch (err) {
         console.log(err);
     }
