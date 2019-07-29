@@ -22,9 +22,11 @@ React.js, Redux, JavaScript, Node.js, Express.js, SQL, Postgres, HTML and CSS.
 3. `npm start server` in one terminal window
 4. `npm run client` in another terminal window
 
-## Screen Shot
+## Screen Shots
 
-<!-- ![example](public/images/) -->
+![example](public/images/movie-list-example-1.png)
+![example](public/images/movie-list-example-2.png)
+![example](public/images/movie-list-example-3.png)
 
 ### Completed Features
 
