@@ -1,7 +1,12 @@
-.App {
-  text-align: center;
-}
+/* .App {
+  background-color: #222; 
+} */
 
+.container {
+    margin: 0 auto;
+    max-width: 1260px;
+    text-align: center;
+}
 
 .App-header {
   background-color: #222;
