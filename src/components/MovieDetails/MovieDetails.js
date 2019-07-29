@@ -37,11 +37,11 @@ const styles = theme => ({
         padding: 0
     },
     btn: {
-        backgroundColor: '#573A3A',
+        backgroundColor: '#336F8F',
         color: '#fff',
         padding: '8px 15px',
         '&:hover': {
-            backgroundColor: '#BA444B',
+            backgroundColor: '#54aad8',
         }
     },
 });
